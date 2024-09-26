@@ -1,0 +1,18 @@
+﻿@model Application.App_Management.ViewModels.ProducersViewModel
+
+<h1 class="mb-4">¿Estas seguro que desea eliminar esta productora?</h1>
+
+<div>
+    <h4>@Model.Name</h4>
+</div>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger text-center">@TempData["ErrorMessage"]</div>
+}
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id"/>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

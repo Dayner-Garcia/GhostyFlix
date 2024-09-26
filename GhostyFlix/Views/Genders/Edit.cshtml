@@ -1,0 +1,20 @@
+﻿@model Application.App_Management.ViewModels.GendersViewModel
+
+<h1 class="mb-4">Editar Genero</h1>
+
+<form asp-action="Edit" method="post" class="needs-validation" novalidate>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Genero</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

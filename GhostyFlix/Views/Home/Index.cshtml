@@ -1,0 +1,133 @@
+﻿@model List<Application.App_Management.ViewModels.SeriesViewModel>
+
+@{
+    ViewBag.Title = "Home - Series";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Lista de Series</h2>
+
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="col-md-10">
+                    <form asp-action="Index" method="get" class="input-group mb-3">
+                        <input type="text" name="searchString" class="form-control" placeholder="Buscar Serie" value="@ViewBag.SearchString"/>
+                        <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                    </form>
+                </div>
+            </div>
+
+            <h4 class="text-center mb-3">Filtros</h4>
+            <form asp-action="Index" method="get" class="d-flex justify-content-center mb-3">
+                <select name="producerId" class="form-select me-2" aria-label="Filtrar por Productora" data-placeholder="Productoras">
+                    <option value="">Todas las Productoras</option>
+                    @foreach (var producer in ViewBag.Producers)
+                    {
+                        <option value="@producer.Value">@producer.Text</option>
+                    }
+                </select>
+                <select name="genreId" class="form-select me-2" aria-label="Filtrar por Genero" data-placeholder="Generos">
+                    <option value="">Todos los Generos</option>
+                    @foreach (var genre in ViewBag.Genres)
+                    {
+                        <option value="@genre.Value">@genre.Text</option>
+                    }
+                </select>
+                <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+            </form>
+
+            <div class="row justify-content-center">
+                @if (!Model.Any())
+                {
+                    if (string.IsNullOrEmpty(ViewBag.SearchString))
+                    {
+                        <div class="alert alert-info text-center">No hay series existentes.</div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning text-center">
+                            <p>No se encontraron series que coincidan con la busqueda: <strong>@ViewBag.SearchString</strong>.</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    foreach (var series in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm transition-card">
+                                <img src="@series.CoverImage" class="card-img-top" alt="@series.Name" style="height: 300px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">@series.Name</h5>
+                                    <p class="card-text">
+                                        <strong>Productor:</strong> @series.ProducerName
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Generos:</strong> @string.Join(", ", new[] { series.PrimaryGenreName, series.SecondaryGenreName }.Where(g => !string.IsNullOrEmpty(g)))
+                                    </p>
+                                    <a href="@Url.Action("Details", "Home", new { id = series.Id })" class="btn btn-primary w-100">Ver Detalles</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .transition-card {
+        transition: transform 0.2s;
+    }
+
+    .transition-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .input-group {
+        animation: fadeIn 0.5s;
+    }
+
+    .form-control, .form-select {
+        text-align: center;
+    }
+    
+    .form-control::placeholder,
+    .form-select::placeholder {
+        color: #000000;
+        text-align: center;
+    }
+    
+    .form-select {
+        min-width: 150px;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var inputField = document.querySelector('input[name="searchString"]');
+        inputField.addEventListener("focus", function () {
+            this.placeholder = "";
+        });
+        inputField.addEventListener("blur", function () {
+            if (this.value === "") {
+                this.placeholder = "Buscar Serie";
+            }
+        });
+
+        var selectFields = document.querySelectorAll('.form-select');
+        selectFields.forEach(function (select) {
+            select.addEventListener("focus", function () {
+                this.setAttribute("data-placeholder", "");
+            });
+            select.addEventListener("blur", function () {
+                if (this.value === "") {
+                    this.setAttribute("data-placeholder", this.getAttribute("data-placeholder"));
+                }
+            });
+        });
+    });
+</script>

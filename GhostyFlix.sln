@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GhostyFlix", "GhostyFlix\GhostyFlix.csproj", "{6446DBD8-97A4-4ED7-8844-5DD32B6D298A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{652C279B-5F24-41C7-A4E7-535224A43EEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{78F47F52-0C2A-4EF2-9516-C74331A2F36F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6446DBD8-97A4-4ED7-8844-5DD32B6D298A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6446DBD8-97A4-4ED7-8844-5DD32B6D298A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6446DBD8-97A4-4ED7-8844-5DD32B6D298A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6446DBD8-97A4-4ED7-8844-5DD32B6D298A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652C279B-5F24-41C7-A4E7-535224A43EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652C279B-5F24-41C7-A4E7-535224A43EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652C279B-5F24-41C7-A4E7-535224A43EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652C279B-5F24-41C7-A4E7-535224A43EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78F47F52-0C2A-4EF2-9516-C74331A2F36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78F47F52-0C2A-4EF2-9516-C74331A2F36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78F47F52-0C2A-4EF2-9516-C74331A2F36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78F47F52-0C2A-4EF2-9516-C74331A2F36F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E00BE683-612E-47CB-9D34-4BFC1665DA8F}
+	EndGlobalSection
+EndGlobal
